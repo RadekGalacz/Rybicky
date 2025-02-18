@@ -35,8 +35,10 @@ function App() {
         fishRequierements.small + fishRequierements.big
     ) {
       setValid(true);
+      setAddToPage(true);
     } else {
       setValid(false);
+      setAddToPage(false);
     }
   };
 
@@ -50,7 +52,7 @@ function App() {
   };
 
   useEffect(() => {
-    validateData()    
+    validateData();
   }, [tempSize, fishRequierements]);
 
   const handleDimensions = (e) => {
@@ -58,17 +60,17 @@ function App() {
     switch (source) {
       case "length": {
         setTempSize({ ...tempSize, length: e.target.value });
-        setAddToPage(false)
+        setAddToPage(false);
         break;
       }
       case "width": {
         setTempSize({ ...tempSize, width: e.target.value });
-        setAddToPage(false)
+        setAddToPage(false);
         break;
       }
       case "height": {
         setTempSize({ ...tempSize, height: e.target.value });
-        setAddToPage(false)
+        setAddToPage(false);
         break;
       }
       default:
@@ -77,7 +79,7 @@ function App() {
   };
 
   const handleApproveDimensions = () => {
-    setAddToPage(true)
+    setAddToPage(true);
   };
 
   // ************************************************************
@@ -156,8 +158,14 @@ function App() {
               {fishRequierements.big} l vody
             </p>
           </div>
-          <div className={`${addToPage === true ? "aquarium-item-approve" : ""}`}>
-            <p>{addToPage === true ? "Navržené akvárium je dostatečně velké pro všechny rybičky" : ""}</p>
+          <div
+            className={`${addToPage === true ? "aquarium-item-approve" : ""}`}
+          >
+            <p>
+              {addToPage === true
+                ? "Navržené akvárium je dostatečně velké pro všechny rybičky"
+                : ""}
+            </p>
           </div>
           <div className="aquarium-form">
             <input
@@ -192,7 +200,7 @@ function App() {
                 handleApproveDimensions();
               }}
             >
-              Schválit rozměry
+              📐Schválit rozměry
             </button>
           </div>
         </>
