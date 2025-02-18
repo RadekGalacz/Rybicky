@@ -35,10 +35,8 @@ function App() {
         fishRequierements.small + fishRequierements.big
     ) {
       setValid(true);
-      setAddToPage(true);
     } else {
       setValid(false);
-      setAddToPage(false);
     }
   };
 
@@ -95,6 +93,8 @@ function App() {
         big: fishRequierements.big - 20,
       });
     }
+    setAddToPage(false);
+
     const temp = fishList.filter((fish) => fish.id !== idToDel);
     setFishList(temp);
   };
@@ -112,6 +112,7 @@ function App() {
       });
     }
     setFishList([...fishList, fish]);
+    setAddToPage(false);
   };
 
   // ************************************************************
