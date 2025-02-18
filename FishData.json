@@ -1,0 +1,19 @@
+{
+    "fish": [
+        {
+            "id": 1,
+            "name": "Nemo",
+            "type": "big"
+        },
+        {
+            "id": 2,
+            "name": "Marlin",
+            "type": "small"
+        },
+        {
+            "id": 3,
+            "name": "Dory",
+            "type": "big"
+        }
+    ]
+}

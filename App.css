@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #3a7bd5, #00d2ff);
+  color: white;
+  min-height: 100vh;
+  display: flex;  
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 410px;
+  padding: 20px;
+}
+
+.page-toggler {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.toggler-btn {
+  flex: 1;
+  height: 45px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: background 0.3s, transform 0.2s;
+  border-radius: 10px;
+}
+
+.toggler-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.active {
+  background: rgba(255, 255, 255, 0.6);
+  font-weight: bold;
+}
+
+.aquarium-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+}
+
+.aquarium-form input {
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  flex: 1;
+}
+
+.btn-aquarium {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: green;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-aquarium:hover {
+  background: darkgreen;
+}
+
+.btn-aquarium:disabled {
+  background: rgba(255, 0, 0, 0.7);
+  cursor: not-allowed;
+}
+
+.aquarium-item {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.aquarium-item-approve {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  background: rgba(0, 128, 0, 0.6);
+  border: 1px solid green;
+  box-shadow: 0 4px 12px rgba(0, 128, 0, 0.4);
+  color: aliceblue;
+}
+
+h1 {
+  margin-bottom: 16px;
+  font-size: 32px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+
+  .aquarium-form {
+    width: 100%;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .aquarium-form input {
+    width: 100%;
+  }
+
+  .btn-aquarium {
+    width: 100%;
+  }
+
+  .aquarium-item, .aquarium-item-approve {
+    width: 100%;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 50px;
+  background-color: rgb(255, 157, 72);
+  border-radius: 6px;
+  margin: 5px 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.item:nth-child(even) {
+  color: rgb(164, 81, 8);
+  background-color: rgb(227, 225, 232);
+}
+
+.item:hover {
+  background-color: rgb(245, 160, 120);
+}
+
+.btn-delete {
+  background-color: transparent;
+  color: #64766a;
+  font-weight: bolder;
+  border: 2px solid #64766a;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-delete:hover {
+  border: 2px solid rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, 0.6);
+  color: white;
+  transform: scale(1.1);
+}
+
+.btn-delete:active {
+  transform: scale(1);
+}

@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fish-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+}
+
+.fish-form input {
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  flex: 1;
+  width: auto;
+}
+
+.btn-add {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: green;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: auto;
+}
+
+.btn-add:hover {
+  background: darkgreen;
+}
+
+.btn-add:disabled {
+  background: rgba(255, 0, 0, 0.7);
+  cursor: not-allowed;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 10px;
+}
+
+@media (max-width: 600px) {
+  .fish-form {
+    flex-direction: column; 
+    gap: 10px;
+    width: 100%;
+  }
+  .fish-form input[name="name"] {
+    width: 100%;
+  }
+
+  .btn-add {
+    width: 100%;
+  }
+
+  .radio-group {
+    flex-direction: column; 
+    gap: 5px;
+  }
+}
