@@ -9,7 +9,8 @@ function App() {
   const [fishList, setFishList] = useState(RawData.fish);
   const [valid, setValid] = useState(false);
   const [addToPage, setAddToPage] = useState(false);
-
+  const [volume, setVolume] = useState(0)
+  
   const [tempSize, setTempSize] = useState({
     length: "",
     width: "",
@@ -34,6 +35,7 @@ function App() {
       (length * width * height) / 1000 >=
         fishRequierements.small + fishRequierements.big
     ) {
+      setVolume(length*width*height / 1000)
       setValid(true);
     } else {
       setValid(false);
@@ -164,7 +166,7 @@ function App() {
           >
             <p>
               {addToPage === true
-                ? "Navržené akvárium je dostatečně velké pro všechny rybičky"
+                ? `Navržené akvárium má objem ${volume} l a je dostatečně velké pro všechny rybičky`
                 : ""}
             </p>
           </div>
