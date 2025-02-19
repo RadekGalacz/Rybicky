@@ -9,8 +9,8 @@ function App() {
   const [fishList, setFishList] = useState(RawData.fish);
   const [valid, setValid] = useState(false);
   const [addToPage, setAddToPage] = useState(false);
-  const [volume, setVolume] = useState(0)
-  
+  const [volume, setVolume] = useState(0);
+
   const [tempSize, setTempSize] = useState({
     length: "",
     width: "",
@@ -35,7 +35,7 @@ function App() {
       (length * width * height) / 1000 >=
         fishRequierements.small + fishRequierements.big
     ) {
-      setVolume(length*width*height / 1000)
+      setVolume((length * width * height) / 1000);
       setValid(true);
     } else {
       setValid(false);
@@ -95,8 +95,6 @@ function App() {
         big: fishRequierements.big - 20,
       });
     }
-    setAddToPage(false);
-
     const temp = fishList.filter((fish) => fish.id !== idToDel);
     setFishList(temp);
   };
@@ -114,8 +112,16 @@ function App() {
       });
     }
     setFishList([...fishList, fish]);
-    setAddToPage(false);
   };
+
+  useEffect(() => {
+    if (volume < fishRequierements.small + fishRequierements.big) {
+      setAddToPage(false);
+    }
+    if (fishRequierements.small + fishRequierements.big === 0) {
+      setAddToPage(false);
+    }
+  });
 
   // ************************************************************
 
@@ -151,14 +157,26 @@ function App() {
           <h1>Plánování rozměrů akvária</h1>
           <div className="aquarium-item">
             <p>
-              🐟 Všechny malé rybičky z tvého seznamu potřebují{" "}
-              {fishRequierements.small} l vody
+              {fishRequierements.small !== 0 ? (
+                <>
+                  🐟 Všechny malé rybičky z tvého seznamu potřebují{" "}
+                  {fishRequierements.small} l vody
+                </>
+              ) : (
+                <>🐟 V seznamu nejsou žádné malé rybičky</>
+              )}
             </p>
           </div>
           <div className="aquarium-item">
             <p>
-              🐠 Všechny velké rybičky z tvého seznamu potřebují{" "}
-              {fishRequierements.big} l vody
+            {fishRequierements.big !== 0 ? (
+                <>
+                  🐠 Všechny velké rybičky z tvého seznamu potřebují{" "}
+                  {fishRequierements.big} l vody
+                </>
+              ) : (
+                <>🐠 V seznamu nejsou žádné velké rybičky</>
+              )}
             </p>
           </div>
           <div
