@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./FishForm.css";
 
+//Přidání rybičky na seznam
 function FishForm({ data, onAdd }) {
   const [valid, setValid] = useState(false);
   const [newFish, setNewFish] = useState({
@@ -12,14 +13,15 @@ function FishForm({ data, onAdd }) {
 
   const [selectedValue, setSelectedValue] = useState("small");
 
+  //Funkce přijímá z radiobuttonů typ rybičky(malá/velká)
   const handleRadioChange = (value) => {
-    console.log(value)
     let updatedFish = { ...newFish, type: value };
     setSelectedValue(value);
     setNewFish(updatedFish);
     validateData(newFish);
   };
 
+  //Funkce pro zapsání jména rybičky z inputu
   const handleChange = (e) => {
     const val = e.target.value;
     let updatedFish = { ...newFish, name: val };
@@ -27,6 +29,7 @@ function FishForm({ data, onAdd }) {
     validateData(updatedFish);
   };
 
+  //Validace jména rybičky - nesmí být prázdný string
   const validateData = (fish) => {
     if (fish.name === "") {
       setValid(false);
@@ -35,6 +38,7 @@ function FishForm({ data, onAdd }) {
     }
   };
 
+  //Reset hodonot po přidání rybičky na seznam
   const resetNewFish = () => {
     const temp = {
       id: newFish.id + 1,
@@ -79,7 +83,7 @@ function FishForm({ data, onAdd }) {
       </label>
 
       <button
-      className="btn-add"
+        className="btn-add"
         disabled={!valid}
         onClick={() => {
           resetNewFish();

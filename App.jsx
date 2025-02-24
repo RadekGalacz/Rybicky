@@ -11,17 +11,20 @@ function App() {
   const [addToPage, setAddToPage] = useState(false);
   const [volume, setVolume] = useState(0);
 
+  //Akvárko - rozměry
   const [tempSize, setTempSize] = useState({
     length: "",
     width: "",
     height: "",
   });
 
+  //Definování potřeby objemu rybiček
   const [fishRequierements, setFishRequierements] = useState({
     small: 10,
     big: 40,
   });
 
+  //Validace velikosti akvárka pro potřeby rybiček
   const validateData = () => {
     const { length, width, height } = tempSize;
     if (
@@ -42,6 +45,7 @@ function App() {
     }
   };
 
+  //Funkce pro smazání inputů po scvhálení rozměrů
   const resetAquarium = () => {
     const temp = {
       length: "",
@@ -55,6 +59,7 @@ function App() {
     validateData();
   }, [tempSize, fishRequierements]);
 
+  //Handle funkce přijímá zapsané rozměry a ukládá do objektu
   const handleDimensions = (e) => {
     const source = e.target.name;
     switch (source) {
@@ -78,11 +83,13 @@ function App() {
     }
   };
 
+  //Funkce po validaci rozměrů vepiše hlášku na stránce
   const handleApproveDimensions = () => {
     setAddToPage(true);
   };
 
   // ************************************************************
+  //Handle funkce pro mazání dat (rybiček)
   const handleDelete = (idToDel, FishType) => {
     if (FishType === "small") {
       setFishRequierements({
@@ -99,6 +106,7 @@ function App() {
     setFishList(temp);
   };
 
+  //Handle funkce pro přidání rybičky na seznam
   const handleAdd = (fish) => {
     if (fish.type === "small") {
       setFishRequierements({
@@ -124,13 +132,12 @@ function App() {
   });
 
   // ************************************************************
-
   return (
     <div className="page-container">
       <div className="page-toggler">
         <button
           className={`toggler-btn ${activeTab === 1 ? "active" : ""}`}
-          name="list-of-fishs"
+          name="list-of-fish"
           onClick={() => setActiveTab(1)}
         >
           Rybičky
@@ -138,7 +145,7 @@ function App() {
 
         <button
           className={`toggler-btn ${activeTab === 2 ? "active" : ""}`}
-          name="shelter-storage"
+          name="aquarium"
           onClick={() => setActiveTab(2)}
         >
           Akvárium
@@ -169,7 +176,7 @@ function App() {
           </div>
           <div className="aquarium-item">
             <p>
-            {fishRequierements.big !== 0 ? (
+              {fishRequierements.big !== 0 ? (
                 <>
                   🐠 Všechny velké rybičky z tvého seznamu potřebují{" "}
                   {fishRequierements.big} l vody
